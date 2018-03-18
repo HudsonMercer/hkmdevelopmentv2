@@ -27,40 +27,49 @@ paneBobble = () => {
     maxRotation = this.state.rotationHome - 0.5,
     minRotation = this.state.rotationHome + 0.05
 
-  if(canBobble && !isMoving && !isOpen && !isBobbling && rotation >= this.props.rotationHome){
-    this.setState({
-      ...this.state,
-      rotation: maxRotation,
-      animationSpeed: speed,
-      isBobbling: true,
-    })
-    console.log('bobblin yo')
-  } else if(canBobble && !isOpen && !isBobbling &&!isMoving && rotation < this.props.rotationHome){
-    this.setState({
-      ...this.state,
-      rotation: minRotation,
-      animationSpeed: speed,
-      isBobbling: true,
-    })
-    console.log('bobblin')
-  }
+  if(!isMoving){
+      if(canBobble &&
+        !isOpen &&
+        !isBobbling &&
+        rotation >= this.props.rotationHome){
+          this.setState({
+            ...this.state,
+            rotation: maxRotation,
+            animationSpeed: speed,
+            isBobbling: true,
+          })
+console.log('bobblin yo')
+      } else if(canBobble &&
+          !isOpen &&
+          !isBobbling &&
+          rotation < this.props.rotationHome){
+            this.setState({
+              ...this.state,
+              rotation: minRotation,
+              animationSpeed: speed,
+              isBobbling: true,
+            })
+console.log('bobblin')
+        }
 
-  if(canBobble && !isBobbling && !isMoving && !isOpen){
-    let timer = speed*1000+Math.random()*100
-    setTimeout(this.paneBobble, timer)
-    setTimeout(() => {
-      this.setState({
-        ...this.state,
-        isBobbling: false
-      })
-
-    }, timer-10)
+    if(canBobble &&
+      !isBobbling &&
+      !isOpen){
+        let timer = speed*1000+Math.random()*100
+        setTimeout(this.paneBobble, timer)
+        setTimeout(() => {
+          this.setState({
+            ...this.state,
+            isBobbling: false
+          })
+        }, timer-10)
+    }
   }
 }
 
 handleClick = () => {
   let animationSpeed = this.props.animationSpeed
-  if(!this.state.isOpen){
+  if(!this.state.isOpen && !this.state.isMoving){
     this.setState({
       ...this.state,
       rotation: 0,
@@ -68,12 +77,18 @@ handleClick = () => {
       animationSpeed,
       isMoving: true,
     })
-  } else {
+  } else if(!this.state.isMoving){
     this.setState({
       ...this.state,
-      bannerBottomHide: 'paneBannerBottomHide',
       closeTimeoutSet: true,
     })
+
+    if(!this.state.isMoving){
+      this.setState({
+        ...this.state,
+        bannerBottomHide: 'paneBannerBottomHide',
+      })
+    }
 
     if(!this.state.closeTimeoutSet){
     setTimeout(() => {
@@ -89,7 +104,6 @@ handleClick = () => {
       })
     }, 250)}
   }
-
   setTimeout(() => {
     this.setState({
       ...this.state,
@@ -101,11 +115,11 @@ handleClick = () => {
 }
 
 toggleBobble(override){
-  if(typeof(override) === 'boolean'){
+  if(typeof(override) === 'boolean' && !this.state.isMoving){
     this.setState({
       canBobble: override
     })
-  } else {
+  } else if(!this.state.isMoving){
     this.setState({
       canBobble: !this.state.canBobble
     })
@@ -124,22 +138,23 @@ setBottomBannerVisibility = () => {
   })
 }
 
+handleMouseEnter = () => {
+  this.toggleBobble(false)
+  if(!this.state.isOpen && this.state.rotation < this.state.rotationHome + 8){
+    this.setState({
+      rotation: this.state.rotation+3,
+      animationSpeed: this.state.animationSpeed/3,
+    })
+  }
+}
+
   render(){
     this.setBottomBannerVisibility()
     return(
       <div
         className={this.props.className}
         onClick={this.handleClick}
-        onMouseEnter={() => {
-          this.toggleBobble(false)
-          if(!this.state.isOpen){
-            this.setState({
-              rotation: this.state.rotation+3,
-              animationSpeed: this.state.animationSpeed/3,
-            })
-          }
-        }}
-
+        onMouseEnter={this.handleMouseEnter}
         onMouseLeave={() => {
           if(!this.state.isMoving){
             setTimeout(this.paneBobble, 100)
@@ -163,6 +178,7 @@ setBottomBannerVisibility = () => {
           }}>
 
           {this.props.lable}
+
         </div>
 
         <div
