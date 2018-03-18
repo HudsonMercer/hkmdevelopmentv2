@@ -38,7 +38,6 @@ paneBobble = () => {
             animationSpeed: speed,
             isBobbling: true,
           })
-console.log('bobblin yo')
       } else if(canBobble &&
           !isOpen &&
           !isBobbling &&
@@ -49,7 +48,6 @@ console.log('bobblin yo')
               animationSpeed: speed,
               isBobbling: true,
             })
-console.log('bobblin')
         }
 
     if(canBobble &&
@@ -148,8 +146,11 @@ handleMouseEnter = () => {
   }
 }
 
+componentWillUpdate(){
+  this.setBottomBannerVisibility()
+}
+
   render(){
-    this.setBottomBannerVisibility()
     return(
       <div
         className={this.props.className}
@@ -169,7 +170,6 @@ handleMouseEnter = () => {
 
         <div className="paneBannerTop"/>
 
-        {this.props.children}
 
         <div
           className="paneLable"
@@ -187,6 +187,9 @@ handleMouseEnter = () => {
             display: `${this.state.bannerBottomDisplay}`
           }}/>
 
+        <div className="paneContent">
+          {this.props.children}
+        </div>
       </div>
     )
   }
