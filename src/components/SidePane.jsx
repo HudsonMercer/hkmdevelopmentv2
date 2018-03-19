@@ -14,105 +14,128 @@ export default class SidePane extends Component{
       animationSpeed: props.animationSpeed,
       bannerBottomHide: null,
       bannerBottomDisplay: 'none',
+      rotationTarget: props.rotationHome,
+      pendingTimers: [],
     }
   }
 
-paneBobble = () => {
-  let rotation = this.state.rotation,
-    canBobble = this.state.canBobble,
-    isBobbling = this.state.isBobbling,
-    isOpen = this.state.isOpen,
-    speed = this.props.bobbleSpeed,
-    isMoving = this.state.isMoving,
-    maxRotation = this.state.rotationHome - 0.5,
-    minRotation = this.state.rotationHome + 0.05
+// paneBobble = (timerID) => {
+//   let rotation = this.state.rotation,
+//     canBobble = this.state.canBobble,
+//     isBobbling = this.state.isBobbling,
+//     isOpen = this.state.isOpen,
+//     speed = this.props.bobbleSpeed,
+//     isMoving = this.state.isMoving,
+//     maxRotation = this.state.rotationHome - 0.5,
+//     minRotation = this.state.rotationHome + 0.05
+//
+//   if(!isMoving){
+//       if(canBobble &&
+//         !isOpen &&
+//         !isBobbling &&
+//         rotation >= this.props.rotationHome){
+//           this.setState({
+//             ...this.state,
+//             rotation: maxRotation,
+//             animationSpeed: speed,
+//             isBobbling: true,
+//           })
+//       } else if(canBobble &&
+//           !isOpen &&
+//           !isBobbling &&
+//           rotation < this.props.rotationHome){
+//             this.setState({
+//               ...this.state,
+//               rotation: minRotation,
+//               animationSpeed: speed,
+//               isBobbling: true,
+//             })
+//         }
+//
+//     if(canBobble &&
+//       !isBobbling &&
+//       !isOpen){
+//         let timer = speed*1000+Math.random()*100
+//         setTimeout(this.paneBobble, timer)
+//         setTimeout(() => {
+//           this.setState({
+//             ...this.state,
+//             isBobbling: false
+//           })
+//         }, timer-10)
+//     }
+//   }
+// }
 
-  if(!isMoving){
-      if(canBobble &&
-        !isOpen &&
-        !isBobbling &&
-        rotation >= this.props.rotationHome){
-          this.setState({
-            ...this.state,
-            rotation: maxRotation,
-            animationSpeed: speed,
-            isBobbling: true,
-          })
-      } else if(canBobble &&
-          !isOpen &&
-          !isBobbling &&
-          rotation < this.props.rotationHome){
-            this.setState({
-              ...this.state,
-              rotation: minRotation,
-              animationSpeed: speed,
-              isBobbling: true,
-            })
-        }
+closePane = () => {
+  const animationSpeed = this.props.animationSpeed
+  const rotationHome = this.props.rotationHome
 
-    if(canBobble &&
-      !isBobbling &&
-      !isOpen){
-        let timer = speed*1000+Math.random()*100
-        setTimeout(this.paneBobble, timer)
-        setTimeout(() => {
-          this.setState({
-            ...this.state,
-            isBobbling: false
-          })
-        }, timer-10)
-    }
-  }
-}
+  this.setState({
+    ...this.state,
+    isMoving: true,
+    isOpen: false,
+    animationSpeed,
+    bannerBottomHide: 'paneBannerBottomHide',
+  })
 
-handleClick = () => {
-  let animationSpeed = this.props.animationSpeed
-  if(!this.state.isOpen && !this.state.isMoving){
+  setTimeout(() => {
     this.setState({
-      ...this.state,
-      rotation: 0,
-      isOpen: true,
-      animationSpeed,
-      isMoving: true,
+    ...this.state,
+    isMoving: true,
+    isOpen: false,
+    rotation: rotationHome,
+    bannerBottomHide: 'paneBannerBottomHide',
+    animationSpeed,
     })
-  } else if(!this.state.isMoving){
-    this.setState({
-      ...this.state,
-      closeTimeoutSet: true,
-    })
+  }, 250)
 
-    if(!this.state.isMoving){
-      this.setState({
-        ...this.state,
-        bannerBottomHide: 'paneBannerBottomHide',
-      })
-    }
-
-    if(!this.state.closeTimeoutSet){
-    setTimeout(() => {
-      this.setState({
-        ...this.state,
-        rotation: this.props.rotationHome,
-        isOpen: false,
-        animationSpeed,
-        isMoving: true,
-        bannerBottomHide: null,
-        bannerBottomDisplay: 'none',
-        closeTimeoutSet: false,
-      })
-    }, 250)}
-  }
   setTimeout(() => {
     this.setState({
       ...this.state,
+      rotation: rotationHome,
       isMoving: false,
+      isOpen: false,
+      bannerBottomDisplay: 'none',
+      bannerBottomHide: 'paneBannerBottomHide',
+      animationSpeed,
     })
-    this.paneBobble()
-  },
-  animationSpeed*1000)
+  }, animationSpeed*1000)
 }
 
-toggleBobble(override){
+openPane = () => {
+  const animationSpeed = this.props.animationSpeed
+  this.setState({
+    ...this.state,
+    isOpen: true,
+    isMoving: true,
+    rotation: 0,
+    animationSpeed,
+  })
+
+  setTimeout(() => {
+    this.setState({
+      ...this.state,
+      isOpen: true,
+      isMoving: false,
+      rotation: 0,
+      bannerBottomDisplay: 'block',
+      bannerBottomHide: null,
+      animationSpeed,
+
+    })
+  }, animationSpeed*1000)
+}
+
+handleClick = () => {
+  if(this.state.isOpen && !this.state.isMoving){
+    this.closePane()
+  } else if (!this.state.isOpen && !this.state.isMoving){
+    this.openPane()
+  }
+}
+
+toggleBobble = (override) => {
   if(typeof(override) === 'boolean' && !this.state.isMoving){
     this.setState({
       canBobble: override
@@ -124,30 +147,44 @@ toggleBobble(override){
   }
 }
 
-setBottomBannerVisibility = () => {
-  this.setState((prevState) => {
-    if(prevState.bannerBottomDisplay === 'none'
-    && this.state.isOpen
-    && !this.state.isMoving){
-      return {
-        bannerBottomDisplay: 'block'
-      }
-    }
-  })
-}
-
 handleMouseEnter = () => {
+  const state = this.state
   this.toggleBobble(false)
   if(!this.state.isOpen && this.state.rotation < this.state.rotationHome + 8){
     this.setState({
+      ...state,
       rotation: this.state.rotation+3,
-      animationSpeed: this.state.animationSpeed/3,
+      animationSpeed: this.props.animationSpeed/3,
     })
   }
 }
 
-componentWillUpdate(){
-  this.setBottomBannerVisibility()
+handleMouseLeave = () => {
+  let pendingTimers = this.state.pendingTimers.slice()
+  if(!this.state.isMoving && pendingTimers.length < 1){
+    pendingTimers.push(setTimeout(() => {
+      //this.paneBobble()
+      this.clearPendingTimers()
+    }, 100))
+    this.setState({
+      ...this.state,
+      pendingTimers
+    })
+
+  }
+  this.toggleBobble(true)
+}
+
+clearPendingTimers = () => {
+
+  for(let i=0; i < this.state.pendingTimers.length; i++){
+    clearTimeout(this.state.pendingTimers[i])
+  }
+  this.setState({
+    ...this.state,
+    pendingTimers: []
+  })
+
 }
 
   render(){
@@ -156,13 +193,8 @@ componentWillUpdate(){
         className={this.props.className}
         onClick={this.handleClick}
         onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={() => {
-          if(!this.state.isMoving){
-            setTimeout(this.paneBobble, 100)
-          }
-          this.toggleBobble(true)
-        }}
-
+        onMouseLeave={this.handleMouseLeave}
+        id={`pane${this.props.className}`}
         style={{
           transform: `rotate(${this.state.rotation}deg)`,
           transition: `transform ${this.state.animationSpeed}s ease-in-out`

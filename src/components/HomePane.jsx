@@ -9,7 +9,11 @@ export default class HomePane extends Component{
         'HKM Development',
         'World Wide Woven Web',
         'NPM - No Particular Meaning',
-        'Nobody Uses Titles Anymore'],
+        'Nobody Uses Titles Anymore',
+        '"I love configuring webpack" - Nobody',
+        'Never Forget the "this."',
+        'Easy As τ',
+      ],
     }
   }
 
