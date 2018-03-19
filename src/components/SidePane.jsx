@@ -15,57 +15,65 @@ export default class SidePane extends Component{
       bannerBottomHide: null,
       bannerBottomDisplay: 'none',
       rotationTarget: props.rotationHome,
-      pendingTimers: [],
     }
   }
 
-// paneBobble = (timerID) => {
-//   let rotation = this.state.rotation,
-//     canBobble = this.state.canBobble,
-//     isBobbling = this.state.isBobbling,
-//     isOpen = this.state.isOpen,
-//     speed = this.props.bobbleSpeed,
-//     isMoving = this.state.isMoving,
-//     maxRotation = this.state.rotationHome - 0.5,
-//     minRotation = this.state.rotationHome + 0.05
-//
-//   if(!isMoving){
-//       if(canBobble &&
-//         !isOpen &&
-//         !isBobbling &&
-//         rotation >= this.props.rotationHome){
-//           this.setState({
-//             ...this.state,
-//             rotation: maxRotation,
-//             animationSpeed: speed,
-//             isBobbling: true,
-//           })
-//       } else if(canBobble &&
-//           !isOpen &&
-//           !isBobbling &&
-//           rotation < this.props.rotationHome){
-//             this.setState({
-//               ...this.state,
-//               rotation: minRotation,
-//               animationSpeed: speed,
-//               isBobbling: true,
-//             })
-//         }
-//
-//     if(canBobble &&
-//       !isBobbling &&
-//       !isOpen){
-//         let timer = speed*1000+Math.random()*100
-//         setTimeout(this.paneBobble, timer)
-//         setTimeout(() => {
-//           this.setState({
-//             ...this.state,
-//             isBobbling: false
-//           })
-//         }, timer-10)
-//     }
-//   }
-// }
+paneBobble = () => {
+  let {rotation,
+       isOpen,
+       isMoving,
+       rotationHome,
+       animationSpeed,
+       canBobble,
+       isBobbling} = this.state,
+      minRotation = rotationHome - 0.5,
+      maxRotation = rotationHome + 0.5,
+      newBobbling = isBobbling,
+      {bobbleSpeed} = this.props
+
+  if(rotation <= rotationHome && !isOpen && !isMoving && !isBobbling && canBobble){
+    //bobble to the left
+    newBobbling = true
+
+    this.setState({
+      ...this.state,
+      rotation: maxRotation,
+      animationSpeed: bobbleSpeed,
+      isBobbling: true,
+    })
+
+    setTimeout(() => {
+      this.setState(
+        {
+          ...this.state,
+          isBobbling: false,
+        },
+      this.paneBobble)
+    },bobbleSpeed*1000)
+
+  } else if(rotation > rotationHome && !isOpen && !isMoving && !isBobbling && canBobble){
+    //bobble to the right
+    newBobbling = true
+
+    this.setState(
+      {
+        ...this.state,
+        rotation: minRotation,
+        animationSpeed: bobbleSpeed,
+        isBobbling: true,
+      }
+    )
+
+    setTimeout(() => {
+      this.setState(
+        {
+          ...this.state,
+          isBobbling: false,
+        },
+      this.paneBobble)
+    },bobbleSpeed*1000)
+  }
+}
 
 closePane = () => {
   const animationSpeed = this.props.animationSpeed
@@ -99,8 +107,8 @@ closePane = () => {
       bannerBottomDisplay: 'none',
       bannerBottomHide: 'paneBannerBottomHide',
       animationSpeed,
-    })
-  }, animationSpeed*1000)
+    },this.paneBobble)
+  }, animationSpeed*1000+250)
 }
 
 openPane = () => {
@@ -136,23 +144,23 @@ handleClick = () => {
 }
 
 toggleBobble = (override) => {
-  if(typeof(override) === 'boolean' && !this.state.isMoving){
-    this.setState({
-      canBobble: override
-    })
-  } else if(!this.state.isMoving){
-    this.setState({
-      canBobble: !this.state.canBobble
-    })
+  let argIsDef = (typeof(override) === 'boolean'),
+      {isMoving, canBobble} = this.state
+
+  if(argIsDef){
+    this.setState({canBobble: override})
+  }
+  else{
+    this.setState({canBobble: !canBobble})
   }
 }
 
 handleMouseEnter = () => {
   const state = this.state
-  this.toggleBobble(false)
   if(!this.state.isOpen && this.state.rotation < this.state.rotationHome + 8){
     this.setState({
       ...state,
+      canBobble: false,
       rotation: this.state.rotation+3,
       animationSpeed: this.props.animationSpeed/3,
     })
@@ -160,31 +168,12 @@ handleMouseEnter = () => {
 }
 
 handleMouseLeave = () => {
-  let pendingTimers = this.state.pendingTimers.slice()
-  if(!this.state.isMoving && pendingTimers.length < 1){
-    pendingTimers.push(setTimeout(() => {
-      //this.paneBobble()
-      this.clearPendingTimers()
-    }, 100))
-    this.setState({
-      ...this.state,
-      pendingTimers
-    })
-
-  }
-  this.toggleBobble(true)
-}
-
-clearPendingTimers = () => {
-
-  for(let i=0; i < this.state.pendingTimers.length; i++){
-    clearTimeout(this.state.pendingTimers[i])
-  }
-  this.setState({
-    ...this.state,
-    pendingTimers: []
-  })
-
+  this.setState((prevState) => {
+    return {
+      ...prevState,
+      canBobble: true,
+    }
+  },this.paneBobble)
 }
 
   render(){
