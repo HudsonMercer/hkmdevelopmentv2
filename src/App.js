@@ -20,7 +20,45 @@ class App extends Component {
           className="mainPane contentPane"
         >
           <PaneContent className="paneContentMainColor" headerText="Hello World">
-            <div>Some bool shite</div>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
+            <div>Some bool shite</div> <br/>
           </PaneContent>
         </SidePane>
 

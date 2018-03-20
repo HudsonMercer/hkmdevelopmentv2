@@ -140,18 +140,19 @@ body
   position: absolute
   background-color: rgb(64, 64, 64)
   width: calc(100vw - 400px)
-  height: 86vh
+  opacity: 0
+  height: 0vh
   left: 0
   top: 0
   padding: 3rem
   padding-top: 9rem
-  // border: solid 1px rgb(48, 48, 48)
   margin-left: 200px
   margin-right: 200px
   margin-top: 8vh
   box-sizing: border-box
   box-shadow: 2px 2px 60px 0px rgba(0, 0, 0, .35)
   border-radius: 100px 0px 100px 0px
+  overflow-y: hidden
 
 .paneContentHeader
   position: absolute
@@ -165,6 +166,13 @@ body
   box-sizing: border-box
   border-radius: 100px 0px 0 0px
   background-color: rgb(42, 42, 42)
+
+.paneContentOpen
+  animation: paneContentOpenAnimation 1s forwards
+  animation-delay: 0.75s
+
+.paneContentClose
+  animation: paneContentOpenAnimationClose 0.75s forwards
 
 .paneContentHomeColor
   color: lighten($homePaneColor, 33.333%)
@@ -195,4 +203,20 @@ body
   0%
     opacity: .8
   100%
+    opacity: 0
+
+@keyframes paneContentOpenAnimation
+  0%
+    height: 0vh
+    opacity: 0
+  100%
+    height: 86vh
+    opacity: 1
+
+@keyframes paneContentOpenAnimationClose
+  0%
+    height: 86vh
+    opacity: 1
+  100%
+    height: 0vh
     opacity: 0
