@@ -122,6 +122,7 @@ body {
   display: inline;
   text-align: center;
   font-weight: bold;
+  user-select: none;
   color: black;
   padding: 0.6rem;
   bottom: 10px;
@@ -153,6 +154,7 @@ body {
   position: absolute;
   text-align: center;
   font-size: 2.33rem;
+  user-select: none;
   top: 0px;
   left: 0px;
   width: 100%;
@@ -183,8 +185,8 @@ body {
 .galleryLeftArrow {
   position: absolute;
   left: 0vw;
-  top: 47vh;
-  height: 6vh;
+  top: 46vh;
+  height: 7vh;
   transition: transform 0.25s ease-in-out, filter 0.25s ease-in-out;
   transform: scale(1, 1);
   filter: drop-shadow(0px 0px 0px transparent); }
@@ -193,12 +195,15 @@ body {
     transform: scale(1.25, 1.25);
     cursor: pointer;
     filter: drop-shadow(10px 10px 8px rgba(0, 0, 0, 0.5)); }
+  .galleryLeftArrow:active {
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.5));
+    transition: filter 0s ease-in-out; }
 
 .galleryRightArrow {
   position: absolute;
-  left: calc(100vw - 6vh);
-  top: 47vh;
-  height: 6vh;
+  left: calc(100vw - 8vh);
+  top: 46vh;
+  height: 7vh;
   transition: transform 0.25s ease-in-out, filter 0.25s ease-in-out;
   filter: drop-shadow(0px 0px 0px transparent); }
   .galleryRightArrow:hover {
@@ -206,6 +211,9 @@ body {
     transform: scale(1.25, 1.25);
     cursor: pointer;
     filter: drop-shadow(10px 10px 8px rgba(0, 0, 0, 0.5)); }
+  .galleryRightArrow:active {
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.5));
+    transition: filter 0s ease-in-out; }
 
 @keyframes paneBannerBottomAnimation {
   0% {

@@ -86,8 +86,20 @@ class App extends Component {
           className="projectsPane contentPane"
         >
           <PaneContentGallery>
-            <PaneContent className="paneContentProjectsColor" headerText="Projects">
+            <PaneContent className="paneContentProjectsColor" headerText="Test1">
+              <div>some other stuff in here lol</div>
+            </PaneContent>
 
+            <PaneContent className="paneContentProjectsColor" headerText="test2">
+              <div>Some stuff in here</div>
+            </PaneContent>
+
+            <PaneContent className="paneContentProjectsColor" headerText="test2">
+              <div>Some stuff in 3333333</div>
+            </PaneContent>
+
+            <PaneContent className="paneContentProjectsColor" headerText="test2">
+              <div>Some stuff4444444re</div>
             </PaneContent>
           </PaneContentGallery>
         </SidePane>
