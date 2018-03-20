@@ -11,10 +11,10 @@ export default class SidePane extends Component{
       canBobble: false,
       isBobbling: false,
       isMoving: false,
-      animationSpeed: props.animationSpeed,
+      animationSpeed: props.animationSpeed || 2,
       bannerBottomHide: null,
       bannerBottomDisplay: 'none',
-      rotationTarget: props.rotationHome,
+      contentVisibilityClass: '',
     }
   }
 
@@ -90,6 +90,7 @@ export default class SidePane extends Component{
       isOpen: false,
       animationSpeed,
       bannerBottomHide: 'paneBannerBottomHide',
+      contentVisibilityClass: 'paneContentClose'
     })
 
     setTimeout(() => {
@@ -135,6 +136,7 @@ export default class SidePane extends Component{
         bannerBottomDisplay: 'block',
         bannerBottomHide: null,
         animationSpeed,
+        contentVisibilityClass: 'paneContentOpen',
       })
     }, animationSpeed*1000)
   }
@@ -182,13 +184,20 @@ export default class SidePane extends Component{
 
   setContentVisibilityClass = () =>{
     if(this.state.isOpen && !this.state.isMoving){
-      return 'paneContentOpen'
+      this.setState({
+        ...this.state,
+        contentVisibilityClass: 'paneContentOpen'
+      })
     } else {
-      return 'paneContentClose'
+      this.setState({
+        ...this.state,
+        contentVisibilityClass: 'paneContentClose'
+      })
     }
   }
 
   render(){
+    let {contentVisibilityClass} = this.state
     return(
       <div
         className={this.props.className}
@@ -218,10 +227,10 @@ export default class SidePane extends Component{
           style={{
             display: `${this.state.bannerBottomDisplay}`
           }}/>
-
-        <div className={`paneContent ${this.setContentVisibilityClass()}`}>
+        {React.cloneElement(this.props.children, {contentVisibilityClass})}
+        {/* <div className={`paneContent ${this.setcontentVisibilityClass()}`}>
           {this.props.children}
-        </div>
+        </div> */}
       </div>
     )
   }

@@ -3,6 +3,7 @@ import SidePane from './components/SidePane'
 import HomePane from './components/HomePane'
 import PaneContent from './components/PaneContent'
 import TentacleMonster from './components/TentacleMonster'
+import PaneContentGallery from './components/PaneContentGallery'
 
 class App extends Component {
   render() {
@@ -77,6 +78,7 @@ class App extends Component {
             </div>
           </PaneContent>
         </SidePane>
+
         <SidePane
           rotationHome={-86}
           animationSpeed={0.75}
@@ -84,11 +86,8 @@ class App extends Component {
           lable="Projects"
           className="projectsPane contentPane"
         >
-          <PaneContent
-            className="paneContentProjectsColor"
-            headerText="Recent Projects"
-          >
-            <div>I made some stuff and things.</div>
+          <PaneContent className="paneContentProjectsColor" headerText="Projects">
+
           </PaneContent>
         </SidePane>
       </div>

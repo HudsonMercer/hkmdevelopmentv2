@@ -163,8 +163,7 @@ body {
   background-color: #2a2a2a; }
 
 .paneContentOpen {
-  animation: paneContentOpenAnimation 1s forwards;
-  animation-delay: 0.75s; }
+  animation: paneContentOpenAnimation 1s forwards; }
 
 .paneContentClose {
   animation: paneContentOpenAnimationClose 0.75s forwards; }
