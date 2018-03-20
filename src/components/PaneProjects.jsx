@@ -6,14 +6,9 @@ export default class PaneProjects extends Component {
   render(){
     return(
       <SidePane>
-        {/* <PaneContentGallery>
-          <PaneContent
-            className="paneContentProjectsColor"
-            headerText="Recent Projects"
-          >
-            <div>I made some stuff and things.</div>
-          </PaneContent>
-        </PaneContentGallery> */}
+        <PaneContent className="paneContentProjectsColor" headerText="Projects">
+          
+        </PaneContent>
       </SidePane>
     )
   }

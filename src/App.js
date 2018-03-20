@@ -12,7 +12,6 @@ class App extends Component {
         I AM ROOT
         {/* <TentacleMonster/> */}
         <HomePane/>
-
         <SidePane
           rotationHome={-78}
           animationSpeed={0.75}
@@ -86,9 +85,11 @@ class App extends Component {
           lable="Projects"
           className="projectsPane contentPane"
         >
-          <PaneContent className="paneContentProjectsColor" headerText="Projects">
+          <PaneContentGallery>
+            <PaneContent className="paneContentProjectsColor" headerText="Projects">
 
-          </PaneContent>
+            </PaneContent>
+          </PaneContentGallery>
         </SidePane>
       </div>
     )

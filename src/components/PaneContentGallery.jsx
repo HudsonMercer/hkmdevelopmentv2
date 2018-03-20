@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import galleryArrow from '../res/galleryLeftArrow.svg'
+import galleryRightArrow from '../res/galleryRightArrow.svg'
 
 export default class PaneContentGallery extends Component {
   constructor(props){
@@ -13,11 +14,14 @@ export default class PaneContentGallery extends Component {
   render(){
     return(
       <div>
-        <div className="galleryLeftArrow"></div>
+        <img src={galleryArrow} className="galleryLeftArrow" alt=""/>
         <div>
-          Here be dragons
+          {React.cloneElement(
+            this.props.children,
+            {contentVisibilityClass: this.props.contentVisibilityClass}
+          )}
         </div>
-        <div className="galleryRightArrow"></div>
+        <img src={galleryRightArrow} className="galleryRightArrow" alt=""/>
       </div>
     )
   }

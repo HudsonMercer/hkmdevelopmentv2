@@ -185,6 +185,34 @@ body
 .paneContentProjectsColor
   color: lighten($projectsPaneColor, 33.333%)
 
+.galleryLeftArrow
+  position: absolute
+  left: 0vw
+  top: 47vh
+  height: 6vh
+  transition: transform 0.25s ease-in-out, filter 0.25s ease-in-out
+  transform: scale(1, 1)
+  filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0))
+  &:hover
+    transform-origin: 50% 50%
+    transform: scale(1.25, 1.25)
+    cursor: pointer
+    filter: drop-shadow(10px 10px 8px rgba(0, 0, 0, 0.5))
+
+.galleryRightArrow
+  position: absolute
+  left: calc(100vw - 6vh)
+  top: 47vh
+  height: 6vh
+  transition: transform 0.25s ease-in-out, filter 0.25s ease-in-out
+  // transform: scale(-1, 1)
+  filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0))
+  &:hover
+    transform-origin: 50% 50%
+    transform: scale(1.25, 1.25)
+    cursor: pointer
+    filter: drop-shadow(10px 10px 8px rgba(0, 0, 0, 0.5))
+
 
 @keyframes paneBannerBottomAnimation
   0%

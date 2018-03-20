@@ -182,20 +182,6 @@ export default class SidePane extends Component{
     },this.paneBobble)
   }
 
-  setContentVisibilityClass = () =>{
-    if(this.state.isOpen && !this.state.isMoving){
-      this.setState({
-        ...this.state,
-        contentVisibilityClass: 'paneContentOpen'
-      })
-    } else {
-      this.setState({
-        ...this.state,
-        contentVisibilityClass: 'paneContentClose'
-      })
-    }
-  }
-
   render(){
     let {contentVisibilityClass} = this.state
     return(
@@ -228,9 +214,6 @@ export default class SidePane extends Component{
             display: `${this.state.bannerBottomDisplay}`
           }}/>
         {React.cloneElement(this.props.children, {contentVisibilityClass})}
-        {/* <div className={`paneContent ${this.setcontentVisibilityClass()}`}>
-          {this.props.children}
-        </div> */}
       </div>
     )
   }
