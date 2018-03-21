@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import galleryArrow from '../res/galleryLeftArrow.svg'
 import galleryRightArrow from '../res/galleryRightArrow.svg'
+import TabIndicator from './TabIndicator'
 
 export default class PaneContentGallery extends Component {
   constructor(props){
@@ -25,8 +26,7 @@ export default class PaneContentGallery extends Component {
 
   handlePreviousPaneClick = (e) => {
     e.stopPropagation()
-    let index = this.state.paneIndex,
-      totalPanes = this.state.galleryPanes.length
+    let index = this.state.paneIndex
     if(index > 0){
       this.setState({
         ...this.state,
@@ -39,11 +39,10 @@ export default class PaneContentGallery extends Component {
     let returnEl =[], curEl
 
     for(let i = 0; i < this.props.children.length; i++){
-      React.cloneElement(this.props.children[i], {contentVisibilityClass: this.props.contentVisibilityClass}
+      curEl = React.cloneElement(this.props.children[i], {contentVisibilityClass: this.props.contentVisibilityClass, key: i}
       )
 
-      returnEl.push(React.cloneElement(this.props.children[i], {contentVisibilityClass: this.props.contentVisibilityClass, key: i}
-      ))
+      returnEl.push(curEl)
     }
 
     return returnEl
@@ -53,21 +52,31 @@ export default class PaneContentGallery extends Component {
     let updatedChildren = this.getChildren()
     return(
       <div>
-        <img src={galleryArrow} onClick={(e) => {
-          this.handlePreviousPaneClick(e)
-        }} className="galleryLeftArrow" alt=""/>
+        <TabIndicator 
+          tabIdPrefix="projectPaneTab"
+          index={this.state.paneIndex}
+          totalTabs={this.props.children.length}
+        />
+        <img
+          src={galleryArrow}
+          onClick={(e) => {
+            this.handlePreviousPaneClick(e)
+          }}
+          className="galleryLeftArrow"
+          alt=""
+        />
         <div>
           {updatedChildren[this.state.paneIndex]}
         </div>
-        <img src={galleryRightArrow} onClick={(e) => {
-          this.handleNextPaneClick(e)
-        }} className="galleryRightArrow" alt=""/>
+        <img
+          src={galleryRightArrow}
+          onClick={(e) => {
+            this.handleNextPaneClick(e)
+          }}
+          className="galleryRightArrow"
+          alt=""
+        />
       </div>
     )
   }
 }
-
-// {React.cloneElement(
-//   this.props.children,
-//   {contentVisibilityClass: this.props.contentVisibilityClass}
-// )}

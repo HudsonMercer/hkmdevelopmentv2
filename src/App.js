@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import SidePane from './components/SidePane'
 import HomePane from './components/HomePane'
-import PaneContent from './components/PaneContent'
 import TentacleMonster from './components/TentacleMonster'
+import PaneContent from './components/PaneContent'
 import PaneContentGallery from './components/PaneContentGallery'
+
+import PaneProjects from './components/PaneProjects'
 
 class App extends Component {
   render() {
@@ -78,31 +80,7 @@ class App extends Component {
           </PaneContent>
         </SidePane>
 
-        <SidePane
-          rotationHome={-86}
-          animationSpeed={0.75}
-          bobbleSpeed={2}
-          lable="Projects"
-          className="projectsPane contentPane"
-        >
-          <PaneContentGallery>
-            <PaneContent className="paneContentProjectsColor" headerText="Test1">
-              <div>some other stuff in here lol</div>
-            </PaneContent>
-
-            <PaneContent className="paneContentProjectsColor" headerText="test2">
-              <div>Some stuff in here</div>
-            </PaneContent>
-
-            <PaneContent className="paneContentProjectsColor" headerText="test2">
-              <div>Some stuff in 3333333</div>
-            </PaneContent>
-
-            <PaneContent className="paneContentProjectsColor" headerText="test2">
-              <div>Some stuff4444444re</div>
-            </PaneContent>
-          </PaneContentGallery>
-        </SidePane>
+        <PaneProjects/>
       </div>
     )
   }

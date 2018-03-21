@@ -23,7 +23,6 @@ export default class SidePane extends Component{
          isOpen,
          isMoving,
          rotationHome,
-         animationSpeed,
          canBobble,
          isBobbling} = this.state,
         minRotation = rotationHome - 0.5,
@@ -151,8 +150,7 @@ export default class SidePane extends Component{
 
   toggleBobble = (override) => {
     let argIsDef = (typeof(override) === 'boolean'),
-        {isMoving, canBobble} = this.state
-
+        {canBobble} = this.state
     if(argIsDef){
       this.setState({canBobble: override})
     }
@@ -195,19 +193,14 @@ export default class SidePane extends Component{
           transform: `rotate(${this.state.rotation}deg)`,
           transition: `transform ${this.state.animationSpeed}s ease-in-out`
         }}>
-
         <div className="paneBannerTop"/>
-
         <div
           className="paneLable"
           style={{
             opacity: this.state.isOpen ? '0' : '1'
           }}>
-
           {this.props.lable}
-
         </div>
-
         <div
           className={`paneBannerBottom ${this.state.bannerBottomHide}`}
           style={{
