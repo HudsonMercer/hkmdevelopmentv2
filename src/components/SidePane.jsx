@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import backIcon from '../res/galleryBackArrow.svg'
 
 export default class SidePane extends Component {
 
@@ -184,6 +185,9 @@ export default class SidePane extends Component {
         transform: `rotate(${ this.state.rotation }deg)`,
         transition: `transform ${ this.state.animationSpeed }s ease-in-out`
       }}>
+      <div className="paneBackButton">
+        <img className="paneBackButtonIcon" src={backIcon} alt=""/>
+      </div>
       <div className="paneBannerTop"/>
       <div className="paneLable" style={{
           opacity: this.state.isOpen

@@ -250,6 +250,53 @@ body {
     display: block;
     border-radius: 50%; }
 
+.iconBar {
+  position: absolute;
+  width: 100%;
+  height: 5vh;
+  left: 0;
+  bottom: 0;
+  text-align: center; }
+
+.icon {
+  height: 100%;
+  box-sizing: border-box;
+  filter: drop-shadow(2px 2px 0px black);
+  padding: 4px; }
+
+.paneBackButton {
+  position: absolute;
+  background-color: transparent;
+  width: 6vh;
+  height: 6vh;
+  left: calc(100vw - 12vh);
+  top: 10vh;
+  border-radius: 50%;
+  box-shadow: 0px 0px 100px transparent;
+  transition: background-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out; }
+  .paneBackButton:hover {
+    background-color: #404040;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.6);
+    cursor: pointer; }
+  .paneBackButton:active {
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.8)); }
+
+.paneBackButtonIcon {
+  margin: 1.5vh;
+  margin-left: 1.25vh;
+  height: 3vh;
+  width: 3vh;
+  filter: drop-shadow(5px 5px 4px transparent);
+  transition: filter 0.25s ease-in-out; }
+  .paneBackButtonIcon:hover {
+    filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, 0.5));
+    cursor: pointer; }
+  .paneBackButtonIcon:active {
+    filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, 0.8)); }
+
+#svgLeftArrow {
+  fill: white; }
+
 @keyframes paneBannerBottomAnimation {
   0% {
     left: 105vw; }
