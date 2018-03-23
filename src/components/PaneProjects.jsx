@@ -78,7 +78,7 @@ export default class PaneProjects extends Component {
           <div>
             <p>A custom implementation of this site again using React as the front end framework but with completely custom styling and design.</p>
             <p>
-              Most interactive and far more lively in color palette than the original design. This version gives a much warmer feel and handles site navigation in an intuitive manner.
+              More interactive and far more lively in color palette than the original design. This version gives a much warmer feel and handles site navigation in an intuitive manner.
             </p>
           </div>
           <IconBar>

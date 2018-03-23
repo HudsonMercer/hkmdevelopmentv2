@@ -189,7 +189,7 @@ export default class SidePane extends Component {
         <img className="paneBackButtonIcon" src={backIcon} alt=""/>
       </div>
       <div className="paneBannerTop"/>
-      <div className="paneLable" style={{
+      <div className="paneLabel" style={{
           opacity: this.state.isOpen
             ? '0'
             : '1'
