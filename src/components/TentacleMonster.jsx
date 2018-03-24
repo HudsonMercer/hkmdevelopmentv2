@@ -3,13 +3,10 @@ import bodyGraphic from '../res/tentacleMonster.svg';
 import bodyGraphicDead from '../res/tentacleMonsterDead.svg';
 
 export default class TentacleMonster extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isAlive: true,
-      move: null
-    };
-  }
+  state = {
+    isAlive: true,
+    move: null,
+  };
 
   componentDidMount() {
     this.doRandomUpdate();
@@ -31,7 +28,7 @@ export default class TentacleMonster extends Component {
             position: 'absolute',
             zIndex: 999,
             left: (Math.random() * 1700).toString() + 'px',
-            top: (Math.random() * 800).toString() + 'px'
+            top: (Math.random() * 800).toString() + 'px',
           }}
           src={this.state.isAlive ? bodyGraphic : bodyGraphicDead}
           alt=""

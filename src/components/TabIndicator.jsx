@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 
 export default class TabIndicator extends Component {
-  constructor() {
-    super();
-    this.state = {
-      selectorPosition: '',
-      selectorScale: 1
-    };
-  }
+  state = {
+    selectorPosition: '',
+    selectorScale: 1,
+  };
 
   setTabDots = () => {
     let tabArray = [],
@@ -35,13 +32,13 @@ export default class TabIndicator extends Component {
     this.setState({
       ...this.state,
       selectorPosition,
-      selectorScale: 3
+      selectorScale: 3,
     });
 
     setTimeout(() => {
       this.setState({
         ...this.state,
-        selectorScale: 1
+        selectorScale: 1,
       });
     }, 250);
   };
@@ -53,7 +50,7 @@ export default class TabIndicator extends Component {
         style={{
           transform: `${this.state.selectorPosition} scale(${
             this.state.selectorScale
-          }, ${this.state.selectorScale})`
+          }, ${this.state.selectorScale})`,
         }}
       />
     );

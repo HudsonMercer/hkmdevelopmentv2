@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SidePane from './SidePane';
 import PaneContent from './PaneContent';
-import PaneContentGallery from './PaneContentGallery';
 
 export default class PaneContactMe extends Component {
   render() {

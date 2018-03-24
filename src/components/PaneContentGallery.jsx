@@ -8,7 +8,7 @@ export default class PaneContentGallery extends Component {
     super(props);
     this.state = {
       galleryPanes: props.children,
-      paneIndex: 0
+      paneIndex: 0,
     };
   }
 
@@ -19,7 +19,7 @@ export default class PaneContentGallery extends Component {
     if (index < totalPanes - 1) {
       this.setState({
         ...this.state,
-        paneIndex: index + 1
+        paneIndex: index + 1,
       });
     }
   };
@@ -30,7 +30,7 @@ export default class PaneContentGallery extends Component {
     if (index > 0) {
       this.setState({
         ...this.state,
-        paneIndex: index - 1
+        paneIndex: index - 1,
       });
     }
   };
@@ -41,7 +41,7 @@ export default class PaneContentGallery extends Component {
     for (let i = 0; i < this.props.children.length; i++) {
       curEl = React.cloneElement(this.props.children[i], {
         contentVisibilityClass: this.props.contentVisibilityClass,
-        key: i
+        key: i,
       });
       returnEl.push(curEl);
     }

@@ -3,33 +3,30 @@ import PropTypes from 'prop-types';
 import backIcon from '../res/galleryBackArrow.svg';
 
 export default class SidePane extends Component {
-  static defaultProps = {
-    animationSpeed: 0.75,
-    bobbleSpeed: 2
-  };
-
   static propTypes = {
     rotationHome: PropTypes.number.isRequired,
     animationSpeed: PropTypes.number,
     bobbleSpeed: PropTypes.number,
-    label: PropTypes.string
+    label: PropTypes.string,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      rotationHome: props.rotationHome,
-      rotation: props.rotationHome,
-      isOpen: false,
-      canBobble: false,
-      isBobbling: false,
-      isMoving: false,
-      animationSpeed: props.animationSpeed || 2,
-      bannerBottomHide: null,
-      bannerBottomDisplay: 'none',
-      contentVisibilityClass: ''
-    };
-  }
+  static defaultProps = {
+    animationSpeed: 0.75,
+    bobbleSpeed: 2,
+  };
+
+  state = {
+    rotationHome: this.props.rotationHome,
+    rotation: this.props.rotationHome,
+    isOpen: false,
+    canBobble: false,
+    isBobbling: false,
+    isMoving: false,
+    animationSpeed: this.props.animationSpeed,
+    bannerBottomHide: null,
+    bannerBottomDisplay: 'none',
+    contentVisibilityClass: '',
+  };
 
   paneBobble = () => {
     let {
@@ -38,51 +35,49 @@ export default class SidePane extends Component {
         isMoving,
         rotationHome,
         canBobble,
-        isBobbling
+        isBobbling,
       } = this.state,
       minRotation = rotationHome - 0.5,
       maxRotation = rotationHome + 0.5,
-      newBobbling = isBobbling,
       { bobbleSpeed } = this.props;
+
     if (!isOpen && !isMoving && !isBobbling && canBobble) {
       if (rotation <= rotationHome) {
         //bobble to the left
-        newBobbling = true;
 
         this.setState({
           ...this.state,
           rotation: maxRotation,
           animationSpeed: bobbleSpeed,
-          isBobbling: true
+          isBobbling: true,
         });
 
         setTimeout(() => {
           this.setState(
             {
               ...this.state,
-              isBobbling: false
+              isBobbling: false,
             },
-            this.paneBobble
+            this.paneBobble,
           );
         }, bobbleSpeed * 1000);
       } else if (rotation > rotationHome) {
         //bobble to the right
-        newBobbling = true;
 
         this.setState({
           ...this.state,
           rotation: minRotation,
           animationSpeed: bobbleSpeed,
-          isBobbling: true
+          isBobbling: true,
         });
         //call yourself after the animation finishes and you set the correct state
         setTimeout(() => {
           this.setState(
             {
               ...this.state,
-              isBobbling: false
+              isBobbling: false,
             },
-            this.paneBobble
+            this.paneBobble,
           );
         }, bobbleSpeed * 1000);
       }
@@ -99,7 +94,7 @@ export default class SidePane extends Component {
       isOpen: false,
       animationSpeed,
       bannerBottomHide: 'paneBannerBottomHide',
-      contentVisibilityClass: 'paneContentClose'
+      contentVisibilityClass: 'paneContentClose',
     });
 
     setTimeout(() => {
@@ -109,7 +104,7 @@ export default class SidePane extends Component {
         isOpen: false,
         rotation: rotationHome,
         bannerBottomHide: 'paneBannerBottomHide',
-        animationSpeed
+        animationSpeed,
       });
     }, 250);
 
@@ -122,9 +117,9 @@ export default class SidePane extends Component {
           isOpen: false,
           bannerBottomDisplay: 'none',
           bannerBottomHide: 'paneBannerBottomHide',
-          animationSpeed
+          animationSpeed,
         },
-        this.paneBobble
+        this.paneBobble,
       );
     }, animationSpeed * 1000 + 250);
   };
@@ -136,7 +131,7 @@ export default class SidePane extends Component {
       isOpen: true,
       isMoving: true,
       rotation: 0,
-      animationSpeed
+      animationSpeed,
     });
 
     setTimeout(() => {
@@ -148,7 +143,7 @@ export default class SidePane extends Component {
         bannerBottomDisplay: 'block',
         bannerBottomHide: null,
         animationSpeed,
-        contentVisibilityClass: 'paneContentOpen'
+        contentVisibilityClass: 'paneContentOpen',
       });
     }, animationSpeed * 1000);
   };
@@ -168,7 +163,7 @@ export default class SidePane extends Component {
       this.setState({ canBobble: override });
     } else {
       this.setState({
-        canBobble: !canBobble
+        canBobble: !canBobble,
       });
     }
   };
@@ -183,7 +178,7 @@ export default class SidePane extends Component {
         ...state,
         canBobble: false,
         rotation: this.state.rotation + 3,
-        animationSpeed: this.props.animationSpeed / 3
+        animationSpeed: this.props.animationSpeed / 3,
       });
     }
   };
@@ -192,7 +187,7 @@ export default class SidePane extends Component {
     this.setState(prevState => {
       return {
         ...prevState,
-        canBobble: true
+        canBobble: true,
       };
     }, this.paneBobble);
   };
@@ -201,7 +196,7 @@ export default class SidePane extends Component {
     <div
       className="paneLabel"
       style={{
-        opacity: this.state.isOpen ? '0' : '1'
+        opacity: this.state.isOpen ? '0' : '1',
       }}
     >
       {this.props.label}
@@ -219,7 +214,7 @@ export default class SidePane extends Component {
         id={`pane${this.props.className}`}
         style={{
           transform: `rotate(${this.state.rotation}deg)`,
-          transition: `transform ${this.state.animationSpeed}s ease-in-out`
+          transition: `transform ${this.state.animationSpeed}s ease-in-out`,
         }}
       >
         <div className="paneBackButton">
@@ -230,7 +225,7 @@ export default class SidePane extends Component {
         <div
           className={`paneBannerBottom ${this.state.bannerBottomHide}`}
           style={{
-            display: `${this.state.bannerBottomDisplay}`
+            display: `${this.state.bannerBottomDisplay}`,
           }}
         />
         {React.cloneElement(this.props.children, { contentVisibilityClass })}

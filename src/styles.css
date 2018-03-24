@@ -188,10 +188,11 @@ body {
   position: absolute;
   background-color: #404040;
   width: 75vw;
-  opacity: 0;
   height: 0vh;
   left: 0;
   top: 0;
+  opacity: 0;
+  font-size: 18px;
   padding: 3rem;
   padding-top: 9rem;
   margin-left: 12.5vw;
@@ -349,6 +350,14 @@ body {
 .hintFade {
   animation: hintFadeAnimation 0.5s 1.5s forwards ease-in-out; }
 
+.blink {
+  animation: blinkAnimation 1.5s infinite;
+  user-select: none; }
+
+.levi {
+  color: #caecd0;
+  text-decoration: underline; }
+
 #svgLeftArrow {
   fill: white; }
 
@@ -397,5 +406,14 @@ body {
     opacity: 1; }
   100% {
     opacity: 1; } }
+@keyframes blinkAnimation {
+  0% {
+    opacity: 1; }
+  49% {
+    opacity: 1; }
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
 
 /*# sourceMappingURL=styles.css.map */

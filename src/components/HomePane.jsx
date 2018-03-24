@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
-import PaneContent from './PaneContent';
 
 export default class HomePane extends Component {
-  constructor() {
-    super();
-    this.state = {
-      titles: [
-        'HKM Development',
-        'World Wide Woven Web',
-        'NPM - No Particular Meaning',
-        'Nobody Uses Titles Anymore',
-        '"I love configuring webpack" - Nobody',
-        'Never Forget the "this."',
-        'Easy As τ'
-      ]
-    };
-  }
+  state = {
+    titles: [
+      'HKM Development',
+      'World Wide Woven Web',
+      'NPM - No Particular Meaning',
+      'Nobody Uses Titles Anymore',
+      '"I love configuring webpack" - Nobody',
+      'Never Forget the "this."',
+      'Easy As τ',
+    ],
+  };
 
   getTitle = () => {
     let { titles } = this.state;
