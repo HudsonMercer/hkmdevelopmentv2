@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import PaneContent from './PaneContent'
+import React, { Component } from 'react';
+import PaneContent from './PaneContent';
 
 export default class HomePane extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       titles: [
         'HKM Development',
@@ -14,18 +14,20 @@ export default class HomePane extends Component {
         'Never Forget the "this."',
         'Easy As τ'
       ]
-    }
+    };
   }
 
   getTitle = () => {
-    let { titles } = this.state
-    return titles[Math.floor( Math.random() * titles.length )]
-  }
+    let { titles } = this.state;
+    return titles[Math.floor(Math.random() * titles.length)];
+  };
 
   render() {
-    return ( <div className="homePane">
-      <h1>Look over there!</h1>
-      <div className="paneHomeArrow"></div>
-    </div> )
+    return (
+      <div className="homePane">
+        <h1 className="hintFade">What's that?</h1>
+        <div className="paneHomeArrow" />
+      </div>
+    );
   }
 }

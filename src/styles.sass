@@ -3,6 +3,8 @@ $mainPaneColor: rgb(77,191,96)
 $projectsPaneColor: rgb(229,230,92)
 $contactPaneColor: rgb(90,120,230)
 
+html
+  overflow: hidden
 body
   overflow: hidden
   margin: 0
@@ -13,12 +15,21 @@ body
   --projectsPane-background-color: rgb(229,230,92)
   --contactPane-background-color: rgb(90,120,230)
 
+.App
+  position: absolute
+  overflow: hidden
+  height: 100vh
+  width: 100vw
+  top: 0
+  left: 0
+
 .contentPane
   position: absolute
   top: 0
   left: 0
   word-wrap: break-word
   width: 115vw
+  min-width: 125vh
   height: 100vh
   transform-origin: bottom left
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5)
@@ -90,6 +101,7 @@ body
   text-align: initial
   opacity: .8
   filter: drop-shadow(5px 5px 30px rgba(0, 0, 0, .25))
+  animation: paneHomeArrowAnimation 4s infinite ease-in-out
   &:after
     position: absolute
     top: 0.7vw
@@ -179,15 +191,15 @@ body
 .paneContent
   position: absolute
   background-color: rgb(64, 64, 64)
-  width: calc(100vw - 400px)
+  width: 75vw
   opacity: 0
   height: 0vh
   left: 0
   top: 0
   padding: 3rem
   padding-top: 9rem
-  margin-left: 200px
-  margin-right: 200px
+  margin-left: 12.5vw
+  margin-right: 12.5vw
   margin-top: 8vh
   box-sizing: border-box
   box-shadow: 2px 2px 60px 0px rgba(0, 0, 0, .35)
@@ -338,6 +350,9 @@ body
   &:active
     filter: drop-shadow(5px 5px 4px rgba(0, 0, 0, 0.8))
 
+.hintFade
+  animation: hintFadeAnimation .5s 1.5s forwards ease-in-out
+
 #svgLeftArrow
   fill: white
 
@@ -374,3 +389,21 @@ body
   100%
     height: 0vh
     opacity: 0
+
+@keyframes hintFadeAnimation
+  0%
+    opacity: 1
+  100%
+    opacity: 0
+
+@keyframes paneHomeArrowAnimation
+  0%
+    opacity: 1
+  80%
+    opacity: 1
+  85%
+    opacity: .75
+  90%
+    opacity: 1
+  100%
+    opacity: 1
