@@ -13,6 +13,12 @@ import semanticImg from '../res/semantic-ui.svg';
 import githubImg from '../res/github.svg';
 import previewImg from '../res/preview.svg';
 
+import hangmanThumb from '../res/websiteThumbs/hangman.png';
+import ticTacToeThumb from '../res/websiteThumbs/ticTacToe.png';
+import ticTacToe_reactThumb from '../res/websiteThumbs/ticTacToe_react.png';
+import hkmdevv1Thumb from '../res/websiteThumbs/hkmdevelopmentv1.png';
+import hkmdevv2Thumb from '../res/websiteThumbs/hkmdevelopmentv2.png';
+
 export default class PaneProjects extends Component {
   render() {
     return (
@@ -26,12 +32,13 @@ export default class PaneProjects extends Component {
             className="paneContentProjectsColor"
             headerText="Hangman"
           >
-            <div>
+            <img src={hangmanThumb} alt="" className="paneContentImage" />
+            <div className="paneContentText">
+              <p>Play hangman, by yourself, because you have no friends.</p>
               <p>
                 Getting started in JS, one of the first real "apps" I created. A
                 simple SPA of hangman.
               </p>
-
               <p>
                 This was my first experience with jQuery and really JavaScript
                 in general. Before hand I had nearly zero experience in
@@ -58,7 +65,8 @@ export default class PaneProjects extends Component {
             className="paneContentProjectsColor"
             headerText="Tic Tac Toe - jQuery"
           >
-            <div>
+            <img src={ticTacToeThumb} alt="" className="paneContentImage" />
+            <div className="paneContentText">
               <p>
                 First implementation of a javascript library. Namely, jQuery.
                 This implementation is primative and makes little to no use of
@@ -89,7 +97,12 @@ export default class PaneProjects extends Component {
             className="paneContentProjectsColor"
             headerText="Tic Tac Toe - React"
           >
-            <div>
+            <img
+              src={ticTacToe_reactThumb}
+              alt=""
+              className="paneContentImage"
+            />
+            <div className="paneContentText">
               <p>
                 A more mature implementation of the original idea, fully
                 implemented and functional. This approach uses a number of
@@ -127,7 +140,8 @@ export default class PaneProjects extends Component {
             className="paneContentProjectsColor"
             headerText="HKM - Dev V1.0"
           >
-            <div>
+            <img src={hkmdevv1Thumb} alt="" className="paneContentImage" />
+            <div className="paneContentText">
               <p>
                 Used as a platform to track personal projects and demonstrate
                 aptitude in designing, implementing, and deploying your every
@@ -164,7 +178,8 @@ export default class PaneProjects extends Component {
             className="paneContentProjectsColor"
             headerText="HKM - Dev V2.0"
           >
-            <div>
+            <img src={hkmdevv2Thumb} alt="" className="paneContentImage" />
+            <div className="paneContentText">
               <p>
                 A custom implementation of this site again using React as the
                 front end framework but with completely custom styling and

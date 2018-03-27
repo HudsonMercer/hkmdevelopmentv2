@@ -186,13 +186,17 @@ body {
 
 .paneContent {
   position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 2vw;
+  grid-template-areas: "gridImage gridImage" "gridText gridText";
   background-color: #404040;
   width: 75vw;
   height: 0vh;
   left: 0;
   top: 0;
   opacity: 0;
-  font-size: 18px;
   padding: 3rem;
   padding-top: 9rem;
   margin-left: 12.5vw;
@@ -216,6 +220,20 @@ body {
   box-sizing: border-box;
   border-radius: 100px 0px 0 0px;
   background-color: #2a2a2a; }
+
+.paneContentAllGrid {
+  grid-area: 1/1/3/3; }
+
+.paneContentText {
+  overflow-y: scroll;
+  grid-area: gridText; }
+
+.paneContentImage {
+  grid-area: gridImage;
+  max-height: 33vh;
+  max-width: 100%;
+  border-radius: 2rem 0px;
+  filter: drop-shadow(8px 8px 25px rgba(0, 0, 0, 0.5)); }
 
 .paneContentOpen {
   animation: paneContentOpenAnimation 1s forwards; }

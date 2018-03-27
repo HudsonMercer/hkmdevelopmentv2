@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 export default class PaneContent extends Component {
-  stopPropagation = e => {
+  stopEventPropagation = e => {
     e.stopPropagation();
   };
 
@@ -12,7 +12,7 @@ export default class PaneContent extends Component {
           this.props.contentVisibilityClass
         }`}
         onClick={e => {
-          this.stopPropagation(e);
+          this.stopEventPropagation(e);
         }}
       >
         <div className="paneContentHeader">{this.props.headerText}</div>
