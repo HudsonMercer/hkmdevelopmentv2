@@ -99,7 +99,6 @@ body
   transform: translate(calc(50vw - 50%), calc(50vh - 50%))
   transform-origin: bottom left
   text-align: initial
-  opacity: .8
   filter: drop-shadow(5px 5px 30px rgba(0, 0, 0, .25))
   animation: paneHomeArrowAnimation 4s infinite ease-in-out
   &:after
@@ -224,7 +223,6 @@ body
   height: 7rem
   padding-top: 2.33rem
   box-sizing: border-box
-  border-radius: 100px 0px 0 0px
   background-color: rgb(42, 42, 42)
 
 .paneContentSubheader
@@ -239,8 +237,8 @@ body
 
 .paneContentImage
   grid-area: gridImage
-  max-height: 33vh
-  max-width: 100%
+  max-height: 100%
+  max-width: 200%
   border-radius: 2rem 0px
   filter: drop-shadow(8px 8px 25px rgba(0, 0, 0, 0.5))
 
@@ -388,6 +386,16 @@ body
 .centerText
   text-align: center
 
+@media only screen and (max-width: 600px)
+  .noMobile
+    display: none
+    
+  .paneContent
+    width: 100vw
+    margin-left: 0px
+    margin-right: 0px
+    border-radius: 15vw 0 15vw 0
+
 #svgLeftArrow
   fill: white
 
@@ -433,15 +441,15 @@ body
 
 @keyframes paneHomeArrowAnimation
   0%
-    filter: opacity(1)
+    filter: opacity(1) drop-shadow(5px 5px 30px rgba(0, 0, 0, .35))
   80%
-    filter: opacity(1)
+    filter: opacity(1) drop-shadow(5px 5px 30px rgba(0, 0, 0, .35))
   85%
-    filter: opacity(.75)
+    filter: opacity(.75) drop-shadow(5px 5px 30px rgba(0, 0, 0, .35))
   90%
-    filter: opacity(1)
+    filter: opacity(1) drop-shadow(5px 5px 30px rgba(0, 0, 0, .35))
   100%
-    filter: opacity(1)
+    filter: opacity(1) drop-shadow(5px 5px 30px rgba(0, 0, 0, .35))
 
 @keyframes blinkAnimation
   0%

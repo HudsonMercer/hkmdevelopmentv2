@@ -12,7 +12,7 @@ export default class PaneContentGallery extends Component {
     };
   }
 
-  handleNextPaneClick = e => {
+  handelNextPaneClick = e => {
     e.stopPropagation();
     let index = this.state.paneIndex,
       totalPanes = this.state.galleryPanes.length;
@@ -24,7 +24,7 @@ export default class PaneContentGallery extends Component {
     }
   };
 
-  handlePreviousPaneClick = e => {
+  handelPreviousPaneClick = e => {
     e.stopPropagation();
     let index = this.state.paneIndex;
     if (index > 0) {
@@ -48,10 +48,12 @@ export default class PaneContentGallery extends Component {
     return returnEl;
   };
 
+  handelTouchEvent = () => {};
+
   render() {
     let updatedChildren = this.getChildren();
     return (
-      <div>
+      <div onTouchEnd={this.handelTouchEvent}>
         <TabIndicator
           tabIdPrefix="projectPaneTab"
           index={this.state.paneIndex}
@@ -60,18 +62,18 @@ export default class PaneContentGallery extends Component {
         <img
           src={galleryArrow}
           onClick={e => {
-            this.handlePreviousPaneClick(e);
+            this.handelPreviousPaneClick(e);
           }}
-          className="galleryLeftArrow"
+          className="galleryLeftArrow noMobile"
           alt=""
         />
         <div>{updatedChildren[this.state.paneIndex]}</div>
         <img
           src={galleryRightArrow}
           onClick={e => {
-            this.handleNextPaneClick(e);
+            this.handelNextPaneClick(e);
           }}
-          className="galleryRightArrow"
+          className="galleryRightArrow noMobile"
           alt=""
         />
       </div>
