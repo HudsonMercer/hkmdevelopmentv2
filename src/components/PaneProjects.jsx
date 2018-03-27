@@ -30,9 +30,16 @@ export default class PaneProjects extends Component {
         <PaneContentGallery>
           <PaneContent
             className="paneContentProjectsColor"
-            headerText="Hangman"
+            header="Hangman"
+            subheader="jQuery"
           >
-            <img src={hangmanThumb} alt="" className="paneContentImage" />
+            <a
+              href="http://hkmdevelopment.com/projects/hangman/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={hangmanThumb} alt="" className="paneContentImage" />
+            </a>
             <div className="paneContentText">
               <p>Play hangman, by yourself, because you have no friends.</p>
               <p>
@@ -63,9 +70,16 @@ export default class PaneProjects extends Component {
 
           <PaneContent
             className="paneContentProjectsColor"
-            headerText="Tic Tac Toe - jQuery"
+            header="Tic Tac Toe"
+            subheader="jQuery"
           >
-            <img src={ticTacToeThumb} alt="" className="paneContentImage" />
+            <a
+              href="http://hkmdevelopment.com/projects/ticTacToe/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={ticTacToeThumb} alt="" className="paneContentImage" />
+            </a>
             <div className="paneContentText">
               <p>
                 First implementation of a javascript library. Namely, jQuery.
@@ -95,13 +109,20 @@ export default class PaneProjects extends Component {
 
           <PaneContent
             className="paneContentProjectsColor"
-            headerText="Tic Tac Toe - React"
+            header="Tic Tac Toe"
+            subheader="React"
           >
-            <img
-              src={ticTacToe_reactThumb}
-              alt=""
-              className="paneContentImage"
-            />
+            <a
+              href="http://hkmdevelopment.com/projects/ticTacToe-react/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={ticTacToe_reactThumb}
+                alt=""
+                className="paneContentImage"
+              />
+            </a>
             <div className="paneContentText">
               <p>
                 A more mature implementation of the original idea, fully
@@ -138,9 +159,16 @@ export default class PaneProjects extends Component {
 
           <PaneContent
             className="paneContentProjectsColor"
-            headerText="HKM - Dev V1.0"
+            header="HKM Dev"
+            subheader="v1.0"
           >
-            <img src={hkmdevv1Thumb} alt="" className="paneContentImage" />
+            <a
+              href="http://hkmdevelopment.com/projects/hkmdevelopment/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={hkmdevv1Thumb} alt="" className="paneContentImage" />
+            </a>
             <div className="paneContentText">
               <p>
                 Used as a platform to track personal projects and demonstrate
@@ -176,7 +204,8 @@ export default class PaneProjects extends Component {
 
           <PaneContent
             className="paneContentProjectsColor"
-            headerText="HKM - Dev V2.0"
+            header="HKM Dev"
+            subheader="v2.0"
           >
             <img src={hkmdevv2Thumb} alt="" className="paneContentImage" />
             <div className="paneContentText">

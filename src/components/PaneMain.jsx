@@ -12,7 +12,7 @@ export default class PaneMain extends Component {
       >
         <PaneContent
           className="paneContentMainColor paneContentAllGrid"
-          headerText="About Me"
+          header="About Me"
         >
           <section className="paneContentAllGrid">
             <h3>Hello</h3>

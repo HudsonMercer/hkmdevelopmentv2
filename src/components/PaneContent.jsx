@@ -15,7 +15,10 @@ export default class PaneContent extends Component {
           this.stopEventPropagation(e);
         }}
       >
-        <div className="paneContentHeader">{this.props.headerText}</div>
+        <div className="paneContentHeader">
+          {this.props.header}
+          <div className="paneContentSubheader">{this.props.subheader}</div>
+        </div>
         {this.props.children}
       </div>
     );
