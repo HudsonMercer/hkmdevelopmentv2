@@ -13,7 +13,9 @@ export default class PaneContentGallery extends Component {
   }
 
   handelNextPaneClick = e => {
-    e.stopPropagation();
+    if (e) {
+      e.stopPropagation();
+    }
     let index = this.state.paneIndex,
       totalPanes = this.state.galleryPanes.length;
     if (index < totalPanes - 1) {
@@ -25,7 +27,9 @@ export default class PaneContentGallery extends Component {
   };
 
   handelPreviousPaneClick = e => {
-    e.stopPropagation();
+    if (e) {
+      e.stopPropagation();
+    }
     let index = this.state.paneIndex;
     if (index > 0) {
       this.setState({
@@ -48,12 +52,51 @@ export default class PaneContentGallery extends Component {
     return returnEl;
   };
 
-  handelTouchEvent = () => {};
+  handelTouchStart = e => {
+    this.setState({
+      ...this.state,
+      touchStartX: e.touches[0].clientX,
+      touchStartY: e.touches[0].clientY,
+    });
+  };
+
+  handelTouchEnd = e => {
+    let { touchStartX, touchStartY } = this.state,
+      touchEndX = e.changedTouches[0].clientX,
+      touchEndY = e.changedTouches[0].clientY;
+
+    this.setState({
+      ...this.state,
+      touchEndX: e.changedTouches[0].clientX,
+      touchEndY: e.changedTouches[0].clienty,
+    });
+
+    // console.log(touchStartX, touchStartY, touchEndX, touchEndY);
+
+    if (
+      touchStartX < touchEndX &&
+      Math.abs(touchStartY - touchEndY) < Math.abs(touchStartX - touchEndX)
+    ) {
+      this.handelPreviousPaneClick();
+    } else if (
+      Math.abs(touchStartY - touchEndY) < Math.abs(touchStartX - touchEndX)
+    ) {
+      this.handelNextPaneClick();
+    }
+  };
 
   render() {
     let updatedChildren = this.getChildren();
     return (
-      <div onTouchEnd={this.handelTouchEvent}>
+      <div
+        onTouchStart={e => {
+          this.handelTouchStart(e);
+        }}
+        onTouchEnd={e => {
+          this.handelTouchEnd(e);
+        }}
+        className="paneContentGallery"
+      >
         <TabIndicator
           tabIdPrefix="projectPaneTab"
           index={this.state.paneIndex}

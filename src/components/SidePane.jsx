@@ -217,7 +217,7 @@ export default class SidePane extends Component {
           transition: `transform ${this.state.animationSpeed}s ease-in-out`,
         }}
       >
-        <div className="paneBackButton noMobile">
+        <div className="paneBackButton">
           <img className="paneBackButtonIcon" src={backIcon} alt="" />
         </div>
         <div className="paneBannerTop" />

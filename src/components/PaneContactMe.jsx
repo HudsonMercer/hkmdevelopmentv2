@@ -12,10 +12,7 @@ export default class PaneContactMe extends Component {
         label="Contact"
         className="contactPane contentPane"
       >
-        <PaneContent
-          className="paneContentContactColor"
-          headerText="Contact Me"
-        >
+        <PaneContent className="paneContentContactColor" header="Contact Me">
           <div className="centerText paneContentAllGrid">
             <h1>Phone</h1>
             208-964-4410
