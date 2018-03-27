@@ -10,6 +10,8 @@ import reduxImg from '../res/redux.svg';
 import sassImg from '../res/sass.svg';
 import firebaseImg from '../res/firebase.svg';
 import semanticImg from '../res/semantic-ui.svg';
+import githubImg from '../res/github.svg';
+import previewImg from '../res/preview.svg';
 
 export default class PaneProjects extends Component {
   render() {
@@ -41,6 +43,14 @@ export default class PaneProjects extends Component {
             </div>
             <IconBar>
               <Icon image={jqueryImg} link="https://jquery.com/" />
+              <Icon
+                image={githubImg}
+                link="https://github.com/Lou-Saydus/hangman"
+              />
+              <Icon
+                image={previewImg}
+                link="http://hkmdevelopment.com/projects/hangman/"
+              />
             </IconBar>
           </PaneContent>
 
@@ -64,6 +74,14 @@ export default class PaneProjects extends Component {
             </div>
             <IconBar>
               <Icon image={jqueryImg} link="https://jquery.com/" />
+              <Icon
+                image={githubImg}
+                link="https://github.com/Lou-Saydus/ticTacToe/"
+              />
+              <Icon
+                image={previewImg}
+                link="http://hkmdevelopment.com/projects/ticTacToe/"
+              />
             </IconBar>
           </PaneContent>
 
@@ -94,6 +112,14 @@ export default class PaneProjects extends Component {
               <Icon image={reduxImg} link="https://redux.js.org/" />
               <Icon image={firebaseImg} link="https://firebase.google.com/" />
               <Icon image={sassImg} link="https://www.sass-lang.com/" />
+              <Icon
+                image={githubImg}
+                link="https://github.com/Lou-Saydus/ticTacToe-react"
+              />
+              <Icon
+                image={previewImg}
+                link="http://hkmdevelopment.com/projects/ticTacToe-react/"
+              />
             </IconBar>
           </PaneContent>
 
@@ -123,6 +149,14 @@ export default class PaneProjects extends Component {
               <Icon image={reactImg} link="https://reactjs.org/" />
               <Icon image={semanticImg} link="https://semantic-ui.com/" />
               <Icon image={sassImg} link="https://www.sass-lang.com/" />
+              <Icon
+                image={githubImg}
+                link="https://github.com/Lou-Saydus/hkmdevelopment"
+              />
+              <Icon
+                image={previewImg}
+                link="http://hkmdevelopment.com/projects/hkmdevelopment/"
+              />
             </IconBar>
           </PaneContent>
 
@@ -145,6 +179,10 @@ export default class PaneProjects extends Component {
             <IconBar>
               <Icon image={reactImg} link="https://reactjs.org/" />
               <Icon image={sassImg} link="https://www.sass-lang.com/" />
+              <Icon
+                image={githubImg}
+                link="https://github.com/Lou-Saydus/hkmdevelopmentv2"
+              />
             </IconBar>
           </PaneContent>
         </PaneContentGallery>

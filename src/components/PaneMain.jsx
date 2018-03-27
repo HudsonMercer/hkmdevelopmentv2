@@ -7,7 +7,7 @@ export default class PaneMain extends Component {
     return (
       <SidePane
         rotationHome={-78}
-        label="Main"
+        label="About"
         className="mainPane contentPane"
       >
         <PaneContent className="paneContentMainColor" headerText="About Me">

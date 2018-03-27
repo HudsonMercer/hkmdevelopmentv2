@@ -1,0 +1,25 @@
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="34" height="34" id="canvas_background" fill="none"/>
+  <g id="canvasGrid" display="none">
+   <rect id="svg_1" width="100%" height="100%" x="0" y="0" stroke-width="0" fill="url(#gridpattern)"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g stroke="null" id="svg_2">
+   <rect stroke="null" fill="#000000" stroke-width="1.5" stroke-opacity="null" x="-13" y="0" width="16.983155" height="32.131267" id="svg_3"/>
+   <rect stroke="null" fill="#000000" stroke-width="1.5" stroke-opacity="null" x="34.171432" y="0.131933" width="3.310276" height="31.999334" id="svg_6"/>
+   <rect stroke="null" fill="#000000" stroke-width="1.5" stroke-opacity="null" x="159.898713" y="44.937889" width="18.51714" height="132.856436" id="svg_7" transform="matrix(0.12080003979211112,0.07824172672974326,-0.07824172672974326,0.12080003979211112,10.536477695599624,-17.726984504412375) "/>
+   <rect stroke="null" fill="#000000" stroke-width="1.5" stroke-opacity="null" x="318.824656" y="121.391377" width="17.236551" height="141.191097" id="svg_8" transform="matrix(-0.13075573443465968,0.06014445384139928,-0.06014445384139928,-0.13075573443465968,76.6787396612873,27.608705449077167) "/>
+   <rect stroke="null" fill="#000000" stroke-width="1.5" stroke-opacity="null" x="47.160667" y="0.03598" width="16.839212" height="32.095286" id="svg_9"/>
+   <rect stroke="null" fill="#000000" stroke-width="1.5" stroke-opacity="null" x="40.612079" y="0.275856" width="3.310276" height="31.85541" id="svg_10"/>
+   <rect stroke="null" fill="#000000" stroke-width="1.5" stroke-opacity="null" fill-opacity="null" x="34.171432" y="0.035982" width="13.097157" height="2.590651" id="svg_11"/>
+   <rect stroke="null" fill="#ff5c00" stroke-width="1.5" x="15.605102" y="0.047973" width="3.022426" height="32.083293" id="svg_4"/>
+   <rect stroke="null" fill="#000000" stroke-width="1.5" stroke-opacity="null" x="0.109172" y="12.185657" width="18.518356" height="4.821484" id="svg_5"/>
+  </g>
+ </g>
+</svg>

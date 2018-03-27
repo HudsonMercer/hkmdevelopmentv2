@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import SidePane from './SidePane';
 import PaneContent from './PaneContent';
+import Icon from './Icon';
+import githubImg from '../res/github.svg';
 
 export default class PaneContactMe extends Component {
   render() {
     return (
       <SidePane
         rotationHome={-82}
-        animationSpeed={0.75}
-        bobbleSpeed={2}
         label="Contact"
         className="contactPane contentPane"
       >
@@ -16,13 +16,23 @@ export default class PaneContactMe extends Component {
           className="paneContentContactColor"
           headerText="Contact Me"
         >
-          <div>
-            Phone: 208-964-4410
+          <div className="centerText">
+            <h1>Phone</h1>
+            208-964-4410
             <br />
-            Email @ brandon.grissom89@gmail.com and some other stuff here to
-            test this
-            <br />
-            Dig dig
+            <h1>E-mail</h1>
+            brandon.grissom89@gmail.com
+            <h1>Github</h1>
+            <div
+              style={{
+                width: '10vh',
+                height: '10vh',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+              }}
+            >
+              <Icon image={githubImg} link="https://github.com/Lou-Saydus" />
+            </div>
           </div>
         </PaneContent>
       </SidePane>

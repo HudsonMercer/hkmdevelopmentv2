@@ -358,6 +358,9 @@ body {
   color: #caecd0;
   text-decoration: underline; }
 
+.centerText {
+  text-align: center; }
+
 #svgLeftArrow {
   fill: white; }
 
